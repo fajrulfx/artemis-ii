@@ -20,29 +20,26 @@ key behavior of a lunar transfer.
 ## Constants
 
 
-| Symbol        | Value                   | What it is                         |
-| ------------- | ----------------------- | ---------------------------------- |
-| G             | 6.6743 \times 10^{-20}  | Gravitational constant (km³/kg·s²) |
-| M_\oplus      | 5.972 \times 10^{24} kg | Earth mass                         |
-| M_\text{moon} | 7.348 \times 10^{22} kg | Moon mass                          |
-| D_\text{moon} | 384,400 km              | Earth–Moon distance                |
-| T_\text{moon} | 27.32 days              | Moon's orbital period              |
+| Symbol | Value | What it is |
+| ------ | ----- | ---------- |
+| $G$ | $6.6743 \times 10^{-20}$ | Gravitational constant (km³/kg·s²) |
+| $M_\oplus$ | $5.972 \times 10^{24}$ kg | Earth mass |
+| $M_{\text{moon}}$ | $7.348 \times 10^{22}$ kg | Moon mass |
+| $D_{\text{moon}}$ | 384,400 km | Earth–Moon distance |
+| $T_{\text{moon}}$ | 27.32 days | Moon's orbital period |
 
 
 ## How the Moon moves
 
 The Moon's position is just a circle, parameterized by time:
 
+$$x_{\text{moon}}(t) = D_{\text{moon}}\cos(\Omega t + \theta_0)$$
 
-x_\text{moon}(t) = D_\text{moon}\cos(\Omega t + \theta_0)
+$$y_{\text{moon}}(t) = D_{\text{moon}}\sin(\Omega t + \theta_0)$$
 
+where $\Omega = 2\pi / T_{\text{moon}}$ is the angular speed.
 
-y_\text{moon}(t) = D_\text{moon}\sin(\Omega t + \theta_0)
-
-
-where \Omega = 2\pi / T_\text{moon} is the angular speed.
-
-The starting angle \theta_0 \approx 126° is a **lead angle**. The
+The starting angle $\theta_0 \approx 126°$ is a **lead angle**. The
 spacecraft is not aimed at the Moon's position at launch, but at the position
 the Moon will occupy roughly three days later when the spacecraft arrives.
 
@@ -50,19 +47,15 @@ the Moon will occupy roughly three days later when the spacecraft arrives.
 
 Newton's law of gravity from each body, summed:
 
-
-\mathbf{a} = -\frac{G M_\oplus}{r_\oplus^{3}}\mathbf{r}
-- \frac{G M_\text{moon}}{r_\text{moon}^{3}}(\mathbf{r} - \mathbf{r}_\text{moon})
-
+$$\mathbf{a} = -\frac{G M_\oplus}{r_\oplus^{3}}\mathbf{r} - \frac{G M_{\text{moon}}}{r_{\text{moon}}^{3}}(\mathbf{r} - \mathbf{r}_{\text{moon}})$$
 
 In words: the spacecraft is pulled toward Earth and toward wherever the Moon
 currently is. Each pull weakens with the inverse square of the distance.
-The \mathbf{r}/r^3 form is just (1/r^2) \times \hat{r}.
+The $\mathbf{r}/r^3$ form is just $(1/r^2) \times \hat{r}$.
 
 This gives us a system of 4 equations (position and velocity in x and y):
 
-
-\dot{x} = v_x, \quad \dot{y} = v_y, \quad \dot{v_x} = a_x, \quad \dot{v_y} = a_y
+$$\dot{x} = v_x, \quad \dot{y} = v_y, \quad \dot{v_x} = a_x, \quad \dot{v_y} = a_y$$
 
 
 
@@ -90,8 +83,8 @@ sample at the start of the step), which accumulates noticeable energy drift
 in orbital problems.
 
 `core.py` uses **RK45** through SciPy's `solve_ivp`. RK45 is RK4 with an
-adaptive step size: it automatically shrinks `dt` near close approaches,
-where gravity is strong and the trajectory curves sharply, and grows `dt`
+adaptive step size: it automatically shrinks $dt$ near close approaches,
+where gravity is strong and the trajectory curves sharply, and grows $dt$
 during long coasting phases. This keeps error bounded without wasting work.
 
 `web/simulation.html` uses **fixed-step RK4** in JavaScript. It is less

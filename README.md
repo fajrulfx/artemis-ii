@@ -1,20 +1,19 @@
 # Artemis II Mission Tracker
 
-Interactive 3D visualization and physics simulator for NASA's Artemis II lunar
-flyby mission. Live demo: [fajrul.com/artemis-ii](https://fajrul.com/artemis-ii)
+Interactive 3D visualization and physics simulator for NASA's Artemis II lunar flyby mission. 
 
-- `**web/index.html**` — Plays back the real Artemis II trajectory from JPL
-Horizons data.
-- `**web/simulation.html**` — Live physics sandbox: tweak velocity, altitude,
-and Moon angle, and see the trajectory.
+Live demo: [fajrul.com/artemis-ii](https://fajrul.com/artemis-ii)
+
+- `web/index.html`: Plays back the real Artemis II trajectory from JPL Horizons data.
+- `web/simulation.html`: Live physics sandbox: tweak velocity, altitude, and Moon angle, and see the trajectory.
 
 See [Physics.md](./Physics.md) for the math.
 
 ## Credits
 
-Inspired by [Javilop's Artemis II Tracker](https://github.com/Javilop/artemis-ii-tracker).
-Orion 3D model by [DeltaX on Cults3D](https://cults3d.com/).
-Big thanks to Claude for doing most of the heavy lifting on the code.
+- Inspired by [Javilop's Artemis II Tracker](https://github.com/Javilop/artemis-ii-tracker).
+- Orion 3D model by [DeltaX on Cults3D](https://cults3d.com/).
+- Big thanks to Claude for doing most of the heavy lifting on the code.
 
 ## Files
 
